@@ -3,9 +3,8 @@
 *Author adaptive cards in pure python*
 
 [![PyPi](https://img.shields.io/pypi/v/pyadaptivecards.svg)](https://pypi.python.org/pypi/pyadaptivecards)
-[![Travis](https://img.shields.io/travis/sQu4rks/pyadaptivecards.svg)](https://travis-ci.org/sQu4rks/pyadaptivecards)
 [![ReadTheDocs](https://readthedocs.org/projects/pyadaptivecards/badge/?version=latest)](https://pyadaptivecards.readthedocs.io/en/latest/?badge=latest)
-[![PyUp](https://pyup.io/repos/github/sQu4rks/pyadaptivecards/shield.svg)](https://pyup.io/repos/github/sQu4rks/pyadaptivecards/)
+[![PyUp](https://pyup.io/repos/github/CiscoSE/pyadaptivecards/shield.svg)](https://pyup.io/repos/github/CiscoSE/pyadaptivecards/)
 
 
 ---
