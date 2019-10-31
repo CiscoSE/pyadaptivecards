@@ -29,8 +29,14 @@ Components
    .. automethod:: __init__
 
 .. autoclass:: pyadaptivecards.components.Fact()
+   :members:
+
+   .. automethod:: __init__
 
 .. autoclass:: pyadaptivecards.components.Choice()
+   :members:
+
+   .. automethod:: __init__
 
 Options
 -------
