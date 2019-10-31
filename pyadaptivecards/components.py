@@ -24,7 +24,7 @@ SOFTWARE.
 
 from .abstract_components import Serializable
 from .utils import check_type
-from .options import BlockElementHeight, Spacing, ImageSize, ImageStyle
+from .options import BlockElementHeight, Spacing, ImageSize, ImageStyle, Colors, FontSize
 from .actions import OpenUrl, ShowCard, Submit
 
 class MediaSource(Serializable):
@@ -175,9 +175,29 @@ class TextBlock(Serializable):
                  separator=None,
                  spacing=None,
                  id=None):
+        """Create a new TextBlock component.
+
+        Args:
+            text(str): The text to be displayed.
+            color(Colors): The color of the text.
+            horizontalAlignment(HorizontalAlignment): Controls how the component
+                is positioned within its parent.
+            isSubtle(bool): If true, displays text slightly toned down to appear 
+                less prominent.
+            maxLines(int): Specifies the number of lines to display.
+            size(FontSize): Controls the size of the text.
+            weight(FontWeight): Controls the weight of a TextBlock element.
+            wrap(bool): If true, allow text to wrap.
+            separator(bool): Draw a separating line when set to true.
+            spacing(Spacing): Specify the spacing of this component.
+            id(str): The id of this component.
+        """
 
 
         #ToDo(mneiding): Type check
+        check_type(text, str, False, False)
+        check_type(color, Colors, False, False)
+
         self.type = "TextBlock"
         self.text = text
         self.color = color
@@ -197,6 +217,7 @@ class TextBlock(Serializable):
                             'isSubtle', 'maxLines', 'size', 'weight', 'wrap',
                             'spacing', 'id', 'separator'
                         ])
+
 class Column(Serializable):
     def __init__(self, items=None,
                        separator=None,
