@@ -35,11 +35,15 @@ class AbstractOption(Enum):
         return self.to_value()
 
 class VerticalContentAlignment:
+    """Specifies the vertical alignment of a component or of components in a 
+    container.
+    """
     TOP = 1
     CENTER = 2
     BOTTOM = 3
 
 class Colors(AbstractOption):
+    """Specifies the color of a textblock"""
     DEFAULT = 1
     DARK = 2
     LIGHT = 3
@@ -49,11 +53,13 @@ class Colors(AbstractOption):
     ATTENTION = 7
 
 class HorizontalAlignment(AbstractOption):
+    """Specifies the horizontal alignment of a component"""
     LEFT = 1
     CENTER = 2
     RIGHT = 3
 
 class FontSize(AbstractOption):
+    """Specifies the font size of a TextBlock"""
     DEFAULT = 1
     SMALL = 2
     MEDIUM = 3
@@ -61,15 +67,18 @@ class FontSize(AbstractOption):
     EXTRALARGE = 5
 
 class FontWeight(AbstractOption):
+    """Specifies the font weight of a TextBlock"""
     DEFAULT = 1
     LIGHTER = 2
     BOLDER = 3
 
 class BlockElementHeight(AbstractOption):
+    """Specifies the way the height of a element is determined. """
     AUTO = 1
     STRETCH = 2
 
 class Spacing(AbstractOption):
+    """Specify the spacing around a component"""
     DEFAULT = 1
     NONE = 2
     SMALL = 3
@@ -79,6 +88,7 @@ class Spacing(AbstractOption):
     PADDING = 7
 
 class ImageSize(AbstractOption):
+    """Specify the size scaling of a Image"""
     AUTO = 1
     STRETCH = 2
     SMALL = 3
@@ -86,19 +96,26 @@ class ImageSize(AbstractOption):
     LARGE = 5
 
 class ImageStyle(AbstractOption):
+    """Specifies the style of the image. 
+
+    PERSON will make the picture rounded
+    """
     DEFAULT = 1
     PERSON = 2
 
 class ContainerStyle(AbstractOption):
+    """Specifies the style of the container"""
     DEFAULT = 1
     EMPHASIS = 2
 
 class TextInputStyle(AbstractOption):
+    """Specifies the type of input that a Text input can expect"""
     TEXT = 1
     TEL = 2
     URL = 3
     EMAIL = 4
 
 class ChoiceInputStyle(AbstractOption):
+    """Specifies the display style for a choice input"""
     COMPACT = 1
     EXPANDED = 2

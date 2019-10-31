@@ -9,6 +9,7 @@ Cards
 
 .. autoclass:: pyadaptivecards.card.AdaptiveCard
     :members:
+    :inherited-members:
 
     .. automethod:: __init__
 
@@ -45,65 +46,55 @@ This section covers all the different components that can be added to the body o
 Options
 -------
 
+Options allow you to configure the look and behaviour of components and containers. 
+
 .. autoclass:: pyadaptivecards.options.VerticalContentAlignment()
    :members:
-
-   .. automethod:: __init__
+   :undoc-members:
 
 .. autoclass:: pyadaptivecards.options.Colors()
    :members:
-
-   .. automethod:: __init__
+   :undoc-members:
 
 .. autoclass:: pyadaptivecards.options.HorizontalAlignment()
    :members:
-
-   .. automethod:: __init__
+   :undoc-members:
 
 .. autoclass:: pyadaptivecards.options.FontSize()
    :members:
-
-   .. automethod:: __init__
+   :undoc-members:
 
 .. autoclass:: pyadaptivecards.options.FontWeight()
    :members:
-
-   .. automethod:: __init__
+   :undoc-members:
 
 .. autoclass:: pyadaptivecards.options.BlockElementHeight()
    :members:
-
-   .. automethod:: __init__
+   :undoc-members:
 
 .. autoclass:: pyadaptivecards.options.Spacing()
    :members:
-
-   .. automethod:: __init__
+   :undoc-members:
 
 .. autoclass:: pyadaptivecards.options.ImageSize()
    :members:
-
-   .. automethod:: __init__
+   :undoc-members:
 
 .. autoclass:: pyadaptivecards.options.ImageStyle()
    :members:
-
-   .. automethod:: __init__
+   :undoc-members:
 
 .. autoclass:: pyadaptivecards.options.ContainerStyle()
    :members:
-
-   .. automethod:: __init__
+   :undoc-members
 
 .. autoclass:: pyadaptivecards.options.TextInputStyle()
    :members:
-
-   .. automethod:: __init__
+   :undoc-members:
 
 .. autoclass:: pyadaptivecards.options.ChoiceInputStyle()
    :members:
-
-   .. automethod:: __init__
+   :undoc-members:
 
 
 Container
