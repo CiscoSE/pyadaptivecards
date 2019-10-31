@@ -24,7 +24,7 @@ SOFTWARE.
 
 from .abstract_components import Serializable
 from .utils import check_type
-from .options import BlockElementHeight, Spacing, ImageSize, ImageStyle, Colors, FontSize
+from .options import BlockElementHeight, Spacing, ImageSize, ImageStyle, Colors, FontSize, ContainerStyle
 from .actions import OpenUrl, ShowCard, Submit
 
 class MediaSource(Serializable):
@@ -163,6 +163,7 @@ class Image(Serializable):
                             'id'
                          ])
 class TextBlock(Serializable):
+    """Component that contains text."""
     def __init__(self,
                  text,
                  color=None,
@@ -219,6 +220,9 @@ class TextBlock(Serializable):
                         ])
 
 class Column(Serializable):
+    """A column contains other components and (together with a ColumnSet) allows to display 
+        multiple components under each other. 
+    """
     def __init__(self, items=None,
                        separator=None,
                        spacing=None,
@@ -227,6 +231,21 @@ class Column(Serializable):
                        verticalContentAlignment=None,
                        width=None,
                        id=None):
+        """Create a new column.
+
+        Args:
+            items(list): List of components in this column
+            separator(bool): Draw a separating line when set to true.
+            spacing(Spacing): Specify the spacing of this component.
+            selectAction(OpenUrl, Submit): Specifies the action that is invoked when the colum is
+                selected.
+            style(ContainerStyle): The style of this column.
+            verticalContentAlignment(VerticalContentAlignment): The vertical alignment of the column
+                content.
+            width(str, int): The width of this column. Can be "auto", "stretch" or a number that 
+                represents the width in pixels.
+            id(str): The id of this component. 
+        """
         self.type = "Column"
         self.items = items
         self.separator = separator
@@ -244,7 +263,15 @@ class Column(Serializable):
                          ])
 
 class Fact(Serializable):
+    """Fact component to display a set of facts. 
+    """
     def __init__(self, title, value):
+        """Create a new Fact.
+        
+        Args:
+            title(str): The title of this fact
+            value(str): The value of this fact
+        """
         self.title = title
         self.value = value
 
@@ -252,7 +279,17 @@ class Fact(Serializable):
                          simple_properties=['title', 'value'])
 
 class Choice(Serializable):
+    """Choice component. 
+
+    Can be used together with a ChoiceSet to display different choices. 
+    """
     def __init__(self, title, value):
+        """Create a new choice. 
+
+        Args:
+            title(str): The title of the choice
+            value(str): The value of the choice
+        """
         self.title = title
         self.value = value
 

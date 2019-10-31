@@ -15,6 +15,8 @@ Cards
 Components
 ----------
 
+This section covers all the different components that can be added to the body of a adaptive card. 
+
 .. autoclass:: pyadaptivecards.components.Image()
    :members:
 
