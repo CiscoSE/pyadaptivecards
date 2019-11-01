@@ -25,8 +25,16 @@ SOFTWARE.
 from .abstract_components import Serializable
 
 class OpenUrl(Serializable):
+    """Open a external url when being invoked. """
     def __init__(self, url, title=None,
                             iconURL=None):
+        """Create a new OpenUrl action. 
+
+        Args:
+            url(str): The URL that is opened upon being invoked.
+            title(str): Label for the button or link that represents this action.
+            iconURL(str): URL to the icon (currently not supported in Webex Teams)
+        """
         self.type = "Action.OpenUrl"
         self.title = title
         self.iconURL = iconURL
@@ -35,10 +43,18 @@ class OpenUrl(Serializable):
                          simple_properties=['type', 'title', 'iconURL'])
 
 class Submit(Serializable):
+    """Gather input fields in the card and submit them."""
     def __init__(self, data=None,
                        title=None,
                        iconURL=None,
                        ):
+        """Create a new Submit action.
+
+        Args:
+            data(dict): Initial data. In html forms this would be hidden fields.
+            title(str): Label for the button or link that represents this action.
+            iconURL(str): URL to the icon (currently not supported in Webex Teams).
+        """
         self.type = "Action.Submit"
         self.data = data
         self.title = title
@@ -48,9 +64,17 @@ class Submit(Serializable):
                          simple_properties=['title', 'iconURL', 'type'])
 
 class ShowCard(Serializable):
+    """Shows the specified adaptive card when this action/button is clicked."""
     def __init__(self, card=None,
                        title=None,
                        iconURL=None):
+        """Create a new ShowCard action.
+
+        Args:
+            card(AdaptiveCard): The adaptive card that is shown.
+            title(str): Label for the button or link that represents this action.
+            iconURL(str): URL to the icon (currently not supported in Webex Teams).
+        """
         self.type = "Action.ShowCard"
         self.card = card
         self.title = title

@@ -48,6 +48,16 @@ Options
 
 Options allow you to configure the look and behaviour of components and containers. 
 
+For example lets say you want to change the font size of a text block. You can do so by 
+specifying:
+
+.. code-block:: python
+
+    from pyadaptivecards.options import FontSize
+    from pyadaptivecards.components import TextBlock
+
+    block = TextBlock("I am the text", size=FontSize.LARGE)
+
 .. autoclass:: pyadaptivecards.options.VerticalContentAlignment()
    :members:
    :undoc-members:
@@ -86,7 +96,7 @@ Options allow you to configure the look and behaviour of components and containe
 
 .. autoclass:: pyadaptivecards.options.ContainerStyle()
    :members:
-   :undoc-members
+   :undoc-members:
 
 .. autoclass:: pyadaptivecards.options.TextInputStyle()
    :members:
