@@ -25,6 +25,7 @@ SOFTWARE.
 from .abstract_components import Serializable
 
 class Text(Serializable):
+    """Input field that accepts text."""
     def __init__(self, id, isMultiline=None,
                            maxLength=None,
                            placeholder=None,
@@ -33,6 +34,20 @@ class Text(Serializable):
                            height=None,
                            separator=None,
                            spacing=None):
+        """Create a new text input.
+
+        Args:
+            id(str): The id of this input.
+            isMultiline(bool): If True, multline content is allowed.
+            maxLength(int): Hint for maximum number of characters (some clients ignore this).
+            placeholder(str): Placeholder text to be displayed in this input field.
+            style(TextInputStyle): Style of the text input (i.e. are we expecting a mail or a url)
+            value(str): Initial value of this field.
+            height(BlockElementHeight): Specifies the way the height of this container should 
+                be calculated (stretch or auto).
+            separator(bool): Draw a separating line when set to true
+            spacing(Spacing): Specify the spacing of this component
+        """
 
         self.type = "Input.Text"
         self.id = id
@@ -53,6 +68,7 @@ class Text(Serializable):
                         ])
 
 class Number(Serializable):
+    """Input field that accepts numbers."""
     def __init__(self, id, max=None,
                            min=None,
                            placeholder=None,
@@ -60,6 +76,19 @@ class Number(Serializable):
                            height=None,
                            separator=None,
                            spacing=None):
+        """Create a new number input.
+
+        Args:
+            id(str): The id of this input.
+            max(int): The maximum accepted value. 
+            min(int): The minimum accepted value.
+            placeholder(str): Placeholder text to be displayed in this input field.
+            value(int): Initial value of this field.
+            height(BlockElementHeight): Specifies the way the height of this container should 
+                be calculated (stretch or auto).
+            separator(bool): Draw a separating line when set to true
+            spacing(Spacing): Specify the spacing of this component
+        """
         self.type = "Input.Number"
         self.id = id
         self.max = max
@@ -77,6 +106,7 @@ class Number(Serializable):
                          ])
 
 class Date(Serializable):
+    """Input field that accepts date inputs."""
     def __init__(self, id, max=None,
                            min=None,
                            placeholder=None,
@@ -84,6 +114,19 @@ class Date(Serializable):
                            height=None,
                            separator=None,
                            spacing=None):
+        """Create a new Date.
+
+        Args:
+            id(str): The id of this input.
+            max(str): The maximum date in ISO-8601 format.
+            min(str): The minimum date in ISO-8601 format.
+            placeholder(str): Placeholder text to be displayed in this input field.
+            value(str): Initial value of this field.
+            height(BlockElementHeight): Specifies the way the height of this container should 
+                be calculated (stretch or auto).
+            separator(bool): Draw a separating line when set to true
+            spacing(Spacing): Specify the spacing of this component
+        """
         self.type = "Input.Date"
         self.id = id
         self.max = max
@@ -100,6 +143,7 @@ class Date(Serializable):
                             'height', 'separator', 'spacing'
                          ])
 class Time(Serializable):
+    """Input field that accepts time inputs."""
     def __init__(self, id, max=None,
                            min=None,
                            placeholder=None,
@@ -107,6 +151,19 @@ class Time(Serializable):
                            height=None,
                            separator=None,
                            spacing=None):
+        """Create a new time input.
+        
+        Args:
+            id(str): The id of this input. 
+            max(str): Maximum value for this time field. Might be ignored by the client.
+            min(str): Minimum value for this time field. Might be ignored by the client.
+            placeholder(str): Placeholder text to be displayed in this input field.
+            value(str): Initial value of this field.
+            height(BlockElementHeight): Specifies the way the height of this container should 
+                be calculated (stretch or auto).
+            separator(bool): Draw a separating line when set to true
+            spacing(Spacing): Specify the spacing of this component
+        """
         self.id = id
         self.type = "Input.Time"
         self.max = max
@@ -124,12 +181,26 @@ class Time(Serializable):
                         ])
 
 class Toggle(Serializable):
+    """Input field that lets a user toggle between multiple values."""
     def __init__(self, title, id, value=None,
                                   valueOff=None,
                                   valueOn=None,
                                   height=None,
                                   separator=None,
                                   spacing=None):
+        """Create a new Toggle input.
+
+        Args:
+            title(str): Title of this toggle
+            id(str): The id of this input.
+            value(str): Initial selected value. Defaults to "false".
+            valueOn(str): The value when toggle is on.
+            valueOff(str): The value when toggle is off.
+            height(BlockElementHeight): Specifies the way the height of this container should 
+                be calculated (stretch or auto).
+            separator(bool): Draw a separating line when set to true
+            spacing(Spacing): Specify the spacing of this component
+        """
         self.title = title
         self.type = "Input.Toggle"
         self.id = id
@@ -147,12 +218,31 @@ class Toggle(Serializable):
                         ])
 
 class Choices(Serializable):
+    """Input field that displays choices to the user.
+    
+    Note:
+        The adaptive card documentation calls this input a "ChoiceSet"
+    """
     def __init__(self, choices, id, isMultiSelect=None,
                                     style=None,
                                     value=None,
                                     height=None,
                                     separator=None,
                                     spacing=None):
+        """Create a new Choices input. 
+
+        Args:
+            choices(list): List of Choice components to be displayed to the user.
+            id(str): The id of this input.
+            isMultiSelect(bool): If True, multiple choices can be selected.
+            style(ChoiceInputStyle): The style of this choices input.
+            value(str): The initial choice (or choices). Comma-seperated for multiple
+                initial selections.
+            height(BlockElementHeight): Specifies the way the height of this container should 
+                be calculated (stretch or auto).
+            separator(bool): Draw a separating line when set to true
+            spacing(Spacing): Specify the spacing of this component
+        """
         self.choices = choices
         self.type = "Input.ChoiceSet"
         self.id = id
