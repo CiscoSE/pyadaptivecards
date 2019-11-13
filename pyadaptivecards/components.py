@@ -197,7 +197,7 @@ class TextBlock(Serializable):
 
         #ToDo(mneiding): Type check
         check_type(text, str, False, False)
-        check_type(color, Colors, False, False)
+        check_type(color, Colors, False, True)
 
         self.type = "TextBlock"
         self.text = text

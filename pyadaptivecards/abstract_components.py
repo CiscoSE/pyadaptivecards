@@ -92,7 +92,7 @@ class Serializable:
             o = getattr(self, sp, None)
 
             if o is not None:
-                export[sp] = str(o)
+                export[sp] = o
 
         # Export all complex properties by calling its respective serialization
         for cp in self.serializable_properties:
