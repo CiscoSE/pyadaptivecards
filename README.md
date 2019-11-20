@@ -100,14 +100,14 @@ card = AdaptiveCard(body=[greeting, first_name, age], actions=[submit])
 # Create attachment
 attachment = {
     "contentType": "application/vnd.microsoft.card.adaptive",
-    "content": card.to_dict(),
-    "text": "Fallback Text"
+    "content": card.to_dict()
 }
 
 # Create payload for the webrequest
 payload = {
     "roomId": "<INSERT_YOUR_ROOM_HERE>",
-    "attachments" : [attachment]
+    "attachments" : [attachment],
+    "text": "Fallback Text"
 }
 
 response = requests.post("https://api.ciscospark.com/v1/messages", headers=headers, data=payload)
@@ -134,7 +134,7 @@ card = AdaptiveCard(body=[greeting, first_name, age], actions=[submit])
 
 # Create a webex teams api connection
 api = WebexTeamsAPI()
-
+room_id = "<INSERT_ROOM_ID_HERE>"
 # Create a dict that will contain the card as well as some meta information
 attachment = {
     "contentType": "application/vnd.microsoft.card.adaptive",
