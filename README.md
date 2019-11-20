@@ -68,6 +68,81 @@ print(card_json)
 
 ![screenshot of card in webex teams](cards_sample.png)
 
+## Usage with Webex Teams
+
+Below is an example how to use pyadaptivecards with Webex Teams. 
+
+### Using raw requests 
+
+```python
+import requests 
+import json
+
+from pyadaptivecards.card import AdaptiveCard
+from pyadaptivecards.inputs import Text, Number
+from pyadaptivecards.components import TextBlock
+from pyadaptivecards.actions import Submit
+
+auth_token = "<INSERT_AUTH_TOKEN_HERE>"
+headers = {
+    "Authorization": "Bearer " + auth_token
+}
+
+# Create card
+greeting = TextBlock("Hey hello there! I am a adaptive card")
+first_name = Text('first_name', placeholder="First Name")
+age = Number('age', placeholder="Age")
+
+submit = Submit(title="Send me!")
+
+card = AdaptiveCard(body=[greeting, first_name, age], actions=[submit])
+
+# Create attachment
+attachment = {
+    "contentType": "application/vnd.microsoft.card.adaptive",
+    "content": card.to_dict(),
+    "text": "Fallback Text"
+}
+
+# Create payload for the webrequest
+payload = {
+    "roomId": "<INSERT_YOUR_ROOM_HERE>",
+    "attachments" : [attachment]
+}
+
+response = requests.post("https://api.ciscospark.com/v1/messages", headers=headers, data=payload)
+```
+
+### Using the webexteamssdk
+The [webexteamssdk](https://github.com/CiscoDevNet/webexteamssdk) provides a great wrapper around the Webex Teams API that can be used to interact with the API in native python. The following example shows how to use pyadaptivecards with the newly implemented attachments option. 
+
+```python
+from pyadaptivecards.card import AdaptiveCard
+from pyadaptivecards.inputs import Text, Number
+from pyadaptivecards.components import TextBlock
+from pyadaptivecards.actions import Submit
+
+from webexteamssdk import WebexTeamsAPI
+
+greeting = TextBlock("Hey hello there! I am a adaptive card")
+first_name = Text('first_name', placeholder="First Name")
+age = Number('age', placeholder="Age")
+
+submit = Submit(title="Send me!")
+
+card = AdaptiveCard(body=[greeting, first_name, age], actions=[submit])
+
+# Create a webex teams api connection
+api = WebexTeamsAPI()
+
+# Create a dict that will contain the card as well as some meta information
+attachment = {
+    "contentType": "application/vnd.microsoft.card.adaptive",
+    "content": card.to_dict(),
+}
+api.messages.create(roomId=room_id, text="Fallback", attachments=[attachment])
+```
+
 ## Features
 
 - Supports all components, options and features of adaptive cards version 1.1
