@@ -23,24 +23,30 @@ SOFTWARE.
 """
 
 from .abstract_components import Serializable
+from .utils import check_type
 
 class OpenUrl(Serializable):
     """Open a external url when being invoked. """
     def __init__(self, url, title=None,
                             iconURL=None):
-        """Create a new OpenUrl action. 
+        """Create a new OpenUrl action.
 
         Args:
             url(str): The URL that is opened upon being invoked.
             title(str): Label for the button or link that represents this action.
             iconURL(str): URL to the icon (currently not supported in Webex Teams)
         """
+        check_type(url, str, is_list=False, may_be_none=False)
+        check_type(title, str, is_list=False, may_be_none=True)
+        check_type(iconURL, str, is_list=False, may_be_none=True)
+
         self.type = "Action.OpenUrl"
+        self.url = url
         self.title = title
         self.iconURL = iconURL
 
         super().__init__(serializable_properties=[],
-                         simple_properties=['type', 'title', 'iconURL'])
+                         simple_properties=['type', 'url', 'title', 'iconURL'])
 
 class Submit(Serializable):
     """Gather input fields in the card and submit them."""
@@ -55,6 +61,10 @@ class Submit(Serializable):
             title(str): Label for the button or link that represents this action.
             iconURL(str): URL to the icon (currently not supported in Webex Teams).
         """
+        check_type(data, dict, is_list=False, may_be_none=True)
+        check_type(title, str, is_list=False, may_be_none=True)
+        check_type(iconURL, str, is_list=False, may_be_none=True)
+
         self.type = "Action.Submit"
         self.data = data
         self.title = title
@@ -75,6 +85,10 @@ class ShowCard(Serializable):
             title(str): Label for the button or link that represents this action.
             iconURL(str): URL to the icon (currently not supported in Webex Teams).
         """
+        # Due to circular imports checking the adaptive card is not possible
+        check_type(title, str, is_list=False, may_be_none=True)
+        check_type(iconURL, str, is_list=False, may_be_none=True)
+
         self.type = "Action.ShowCard"
         self.card = card
         self.title = title
