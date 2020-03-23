@@ -36,11 +36,12 @@ class OpenUrl(Serializable):
             iconURL(str): URL to the icon (currently not supported in Webex Teams)
         """
         self.type = "Action.OpenUrl"
+        self.url = url
         self.title = title
         self.iconURL = iconURL
 
         super().__init__(serializable_properties=[],
-                         simple_properties=['type', 'title', 'iconURL'])
+                         simple_properties=['type', 'url', 'title', 'iconURL'])
 
 class Submit(Serializable):
     """Gather input fields in the card and submit them."""
