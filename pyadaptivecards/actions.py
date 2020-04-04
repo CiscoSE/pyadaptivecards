@@ -61,8 +61,8 @@ class Submit(Serializable):
         self.title = title
         self.iconURL = iconURL
 
-        super().__init__(serializable_properties=['data'],
-                         simple_properties=['title', 'iconURL', 'type'])
+        super().__init__(serializable_properties=[],
+                         simple_properties=['data', 'title', 'iconURL', 'type'])
 
 class ShowCard(Serializable):
     """Shows the specified adaptive card when this action/button is clicked."""
