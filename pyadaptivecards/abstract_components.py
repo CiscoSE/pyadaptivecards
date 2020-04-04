@@ -91,7 +91,9 @@ class Serializable:
         for sp in self.simple_properties:
             o = getattr(self, sp, None)
 
-            if o is not None:
+            if getattr(o, 'to_dict', None):
+                export[sp] = o.to_dict()
+            elif o is not None:
                 export[sp] = o
 
         # Export all complex properties by calling its respective serialization
