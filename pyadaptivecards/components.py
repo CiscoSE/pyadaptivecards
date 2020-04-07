@@ -23,9 +23,12 @@ SOFTWARE.
 """
 
 from .abstract_components import Serializable
-from .utils import check_type
-from .options import BlockElementHeight, Spacing, ImageSize, ImageStyle, Colors, FontSize, ContainerStyle
 from .actions import OpenUrl, ShowCard, Submit
+from .options import (BlockElementHeight, Colors, ContainerStyle, FontSize,
+                      FontWeight, HorizontalAlignment, ImageSize, ImageStyle,
+                      Spacing, VerticalContentAlignment)
+from .utils import check_type
+
 
 class MediaSource(Serializable):
     """Defines the source of a Media element."""
@@ -132,7 +135,7 @@ class Image(Serializable):
         check_type(altText, str, False, True)
         check_type(backgroundColor, str, False, True)
         check_type(height, (str, BlockElementHeight), False, True)
-        check_type(horizontalAlignment, horizontalAlignment, False, True)
+        check_type(horizontalAlignment, HorizontalAlignment, False, True)
         check_type(selectAction, (OpenUrl, Submit), False, True)
         check_type(size, ImageSize, False, True)
         check_type(style, ImageStyle, False, True)
@@ -183,7 +186,7 @@ class TextBlock(Serializable):
             color(Colors): The color of the text.
             horizontalAlignment(HorizontalAlignment): Controls how the component
                 is positioned within its parent.
-            isSubtle(bool): If true, displays text slightly toned down to appear 
+            isSubtle(bool): If true, displays text slightly toned down to appear
                 less prominent.
             maxLines(int): Specifies the number of lines to display.
             size(FontSize): Controls the size of the text.
@@ -198,6 +201,15 @@ class TextBlock(Serializable):
         #ToDo(mneiding): Type check
         check_type(text, str, False, False)
         check_type(color, Colors, False, True)
+        check_type(horizontalAlignment, HorizontalAlignment, False, True)
+        check_type(isSubtle, bool, False, True)
+        check_type(maxLines, int, False, True)
+        check_type(size, FontSize, False, True)
+        check_type(weight, FontWeight, False, True)
+        check_type(wrap, bool, False, True)
+        check_type(separator, bool, False, True)
+        check_type(spacing, Spacing, False, True)
+        check_type(id, str, False, True)
 
         self.type = "TextBlock"
         self.text = text
@@ -220,8 +232,8 @@ class TextBlock(Serializable):
                         ])
 
 class Column(Serializable):
-    """A column contains other components and (together with a ColumnSet) allows to display 
-        multiple components under each other. 
+    """A column contains other components and (together with a ColumnSet) allows to display
+        multiple components under each other.
     """
     def __init__(self, items=None,
                        separator=None,
@@ -242,10 +254,18 @@ class Column(Serializable):
             style(ContainerStyle): The style of this column.
             verticalContentAlignment(VerticalContentAlignment): The vertical alignment of the column
                 content.
-            width(str, int): The width of this column. Can be "auto", "stretch" or a number that 
+            width(str, int): The width of this column. Can be "auto", "stretch" or a number that
                 represents the width in pixels.
-            id(str): The id of this component. 
+            id(str): The id of this component.
         """
+        check_type(separator, bool, False, True)
+        check_type(spacing, Spacing, False, True)
+        check_type(selectAction, (OpenUrl, Submit), False, True)
+        check_type(style, (str, ContainerStyle), False, True)
+        check_type(verticalContentAlignment, VerticalContentAlignment, False, True)
+        check_type(width, str, False, True)
+        check_type(id, str, False, True)
+
         self.type = "Column"
         self.items = items
         self.separator = separator
@@ -263,15 +283,18 @@ class Column(Serializable):
                          ])
 
 class Fact(Serializable):
-    """Fact component to display a set of facts. 
+    """Fact component to display a set of facts.
     """
     def __init__(self, title, value):
         """Create a new Fact.
-        
+
         Args:
             title(str): The title of this fact
             value(str): The value of this fact
         """
+        check_type(title, str, False, False)
+        check_type(value, str, False, False)
+
         self.title = title
         self.value = value
 
@@ -279,17 +302,20 @@ class Fact(Serializable):
                          simple_properties=['title', 'value'])
 
 class Choice(Serializable):
-    """Choice component. 
+    """Choice component.
 
-    Can be used together with a ChoiceSet to display different choices. 
+    Can be used together with a ChoiceSet to display different choices.
     """
     def __init__(self, title, value):
-        """Create a new choice. 
+        """Create a new choice.
 
         Args:
             title(str): The title of the choice
             value(str): The value of the choice
         """
+        check_type(title, str, False, False)
+        check_type(value, str, False, False)
+
         self.title = title
         self.value = value
 
