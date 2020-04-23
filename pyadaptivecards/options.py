@@ -24,7 +24,8 @@ SOFTWARE.
 
 from enum import Enum
 
-class AbstractOption(Enum):
+
+class AbstractOption(str, Enum):
     def to_value(self):
         return str(self.name).lower()
 
@@ -34,88 +35,88 @@ class AbstractOption(Enum):
     def __repr__(self):
         return self.to_value()
 
-class VerticalContentAlignment:
-    """Specifies the vertical alignment of a component or of components in a 
+class VerticalContentAlignment(AbstractOption):
+    """Specifies the vertical alignment of a component or of components in a
     container.
     """
-    TOP = 1
-    CENTER = 2
-    BOTTOM = 3
+    TOP = 'top'
+    CENTER = 'center'
+    BOTTOM = 'bottom'
 
 class Colors(AbstractOption):
     """Specifies the color of a textblock"""
-    DEFAULT = 1
-    DARK = 2
-    LIGHT = 3
-    ACCENT = 4
-    GOOD = 5
-    WARNING = 6
-    ATTENTION = 7
+    DEFAULT = 'default'
+    DARK = 'dark'
+    LIGHT = 'light'
+    ACCENT = 'accent'
+    GOOD = 'good'
+    WARNING = 'warning'
+    ATTENTION = 'attention'
 
 class HorizontalAlignment(AbstractOption):
     """Specifies the horizontal alignment of a component"""
-    LEFT = 1
-    CENTER = 2
-    RIGHT = 3
+    LEFT = 'left'
+    CENTER = 'center'
+    RIGHT = 'right'
 
 class FontSize(AbstractOption):
     """Specifies the font size of a TextBlock"""
-    DEFAULT = 1
-    SMALL = 2
-    MEDIUM = 3
-    LARGE = 4
-    EXTRALARGE = 5
+    DEFAULT = 'default'
+    SMALL = 'small'
+    MEDIUM = 'medium'
+    LARGE = 'large'
+    EXTRALARGE = 'extralarge'
 
 class FontWeight(AbstractOption):
     """Specifies the font weight of a TextBlock"""
-    DEFAULT = 1
-    LIGHTER = 2
-    BOLDER = 3
+    DEFAULT = 'default'
+    LIGHTER = 'lighter'
+    BOLDER = 'bolder'
 
 class BlockElementHeight(AbstractOption):
     """Specifies the way the height of a element is determined. """
-    AUTO = 1
-    STRETCH = 2
+    AUTO = 'auto'
+    STRETCH = 'stretch'
 
 class Spacing(AbstractOption):
     """Specify the spacing around a component"""
-    DEFAULT = 1
-    NONE = 2
-    SMALL = 3
-    MEDIUM = 4
-    LARGE = 5
-    EXTRALARGE = 6
-    PADDING = 7
+    DEFAULT = 'default'
+    NONE = 'none'
+    SMALL = 'small'
+    MEDIUM = 'medium'
+    LARGE = 'large'
+    EXTRALARGE = 'extralarge'
+    PADDING = 'padding'
 
 class ImageSize(AbstractOption):
     """Specify the size scaling of a Image"""
-    AUTO = 1
-    STRETCH = 2
-    SMALL = 3
-    MEDIUM = 4
-    LARGE = 5
+    AUTO = 'auto'
+    STRETCH = 'stretch'
+    SMALL = 'small'
+    MEDIUM = 'medium'
+    LARGE = 'large'
 
 class ImageStyle(AbstractOption):
-    """Specifies the style of the image. 
+    """Specifies the style of the image.
 
     PERSON will make the picture rounded
     """
-    DEFAULT = 1
-    PERSON = 2
+    DEFAULT = 'default'
+    PERSON = 'person'
 
 class ContainerStyle(AbstractOption):
     """Specifies the style of the container"""
-    DEFAULT = 1
-    EMPHASIS = 2
+    DEFAULT = 'default'
+    EMPHASIS = 'emphasis'
 
 class TextInputStyle(AbstractOption):
     """Specifies the type of input that a Text input can expect"""
-    TEXT = 1
-    TEL = 2
-    URL = 3
-    EMAIL = 4
+    TEXT = 'text'
+    TEL = 'tel'
+    URL = 'url'
+    EMAIL = 'email'
 
 class ChoiceInputStyle(AbstractOption):
     """Specifies the display style for a choice input"""
-    COMPACT = 1
-    EXPANDED = 2
+    COMPACT = 'compact'
+    EXPANDED = 'expanded'
