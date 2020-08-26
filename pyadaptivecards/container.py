@@ -91,9 +91,9 @@ class ColumnSet(Serializable):
       self.spacing = spacing
       self.id = id
 
-      super().__init__(serializable_properties=['columns'],
+      super().__init__(serializable_properties=['columns', 'selectAction'],
                        simple_properties=[
-                        'selectAction', 'height', 'separator', 'spacing',
+                        'height', 'separator', 'spacing',
                         'id', 'type'
                       ])
 

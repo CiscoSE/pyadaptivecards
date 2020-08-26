@@ -107,7 +107,7 @@ class Serializable:
                     for i in o:
                         l.append(i.to_dict())
                 else:
-                    l.append(o.to_dict())
+                    l = o.to_dict()
                 export[cp] = l
 
         return export

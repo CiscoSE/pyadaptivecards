@@ -132,7 +132,7 @@ class Image(Serializable):
         check_type(altText, str, False, True)
         check_type(backgroundColor, str, False, True)
         check_type(height, (str, BlockElementHeight), False, True)
-        check_type(horizontalAlignment, horizontalAlignment, False, True)
+        check_type(horizontalAlignment, HorizontalAlignment, False, True)
         check_type(selectAction, (OpenUrl, Submit), False, True)
         check_type(size, ImageSize, False, True)
         check_type(style, ImageStyle, False, True)
