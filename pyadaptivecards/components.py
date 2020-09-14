@@ -24,7 +24,7 @@ SOFTWARE.
 
 from .abstract_components import Serializable
 from .utils import check_type
-from .options import BlockElementHeight, Spacing, ImageSize, ImageStyle, Colors, FontSize, ContainerStyle
+from .options import BlockElementHeight, Spacing, ImageSize, ImageStyle, Colors, FontSize, ContainerStyle, HorizontalAlignment
 from .actions import OpenUrl, ShowCard, Submit
 
 class MediaSource(Serializable):
