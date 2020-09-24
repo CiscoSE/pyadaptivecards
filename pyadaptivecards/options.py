@@ -37,7 +37,7 @@ class AbstractOption(Enum):
     def to_dict(self):
         return self.to_value()
 
-class VerticalContentAlignment:
+class VerticalContentAlignment(AbstractOption):
     """Specifies the vertical alignment of a component or of components in a 
     container.
     """
