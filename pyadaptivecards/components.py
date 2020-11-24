@@ -230,6 +230,7 @@ class Column(Serializable):
                        style=None,
                        verticalContentAlignment=None,
                        width=None,
+                       bleed=None,
                        id=None):
         """Create a new column.
 
@@ -244,6 +245,7 @@ class Column(Serializable):
                 content.
             width(str, int): The width of this column. Can be "auto", "stretch" or a number that 
                 represents the width in pixels.
+            bleed(bool): Determines whether the column should bleed through its parent’s padding.
             id(str): The id of this component. 
         """
         self.type = "Column"
@@ -254,12 +256,14 @@ class Column(Serializable):
         self.style = style
         self.verticalContentAlignment = verticalContentAlignment
         self.width = width
+        self.bleed = bleed
         self.id = id
 
         super().__init__(serializable_properties=['items'],
                          simple_properties=[
                             'type', 'separator', 'spacing', 'selectAction',
-                            'style', 'verticalContentAlignment', 'width', 'id'
+                            'style', 'verticalContentAlignment', 'width', 'bleed',
+                            'id'
                          ])
 
 class Fact(Serializable):

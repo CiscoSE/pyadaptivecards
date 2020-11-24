@@ -62,7 +62,7 @@ class AdaptiveCard(Serializable):
 
         # Set properties
         self.type = "AdaptiveCard"
-        self.version = "1.1" # This is the version currently supported in Teams
+        self.version = "1.2" # This is the version currently supported in Teams
         self.body = body
         self.actions = actions
         self.selectAction = selectAction

@@ -23,6 +23,8 @@ SOFTWARE.
 """
 
 from .abstract_components import Serializable
+from .components import Choice
+from .utils import check_type
 
 class Text(Serializable):
     """Input field that accepts text."""
@@ -43,11 +45,16 @@ class Text(Serializable):
             placeholder(str): Placeholder text to be displayed in this input field.
             style(TextInputStyle): Style of the text input (i.e. are we expecting a mail or a url)
             value(str): Initial value of this field.
-            height(BlockElementHeight): Specifies the way the height of this container should 
+            height(BlockElementHeight): Specifies the way the height of this container should
                 be calculated (stretch or auto).
             separator(bool): Draw a separating line when set to true
             spacing(Spacing): Specify the spacing of this component
         """
+
+        check_type(id, str, is_list=False, may_be_none=False)
+        check_type(isMultiline, bool, is_list=False, may_be_none=True)
+        check_type(maxLength, int, is_list=False, may_be_none=True)
+        check_type(placeholder, str, is_list=False, may_be_none=True)
 
         self.type = "Input.Text"
         self.id = id
@@ -243,6 +250,9 @@ class Choices(Serializable):
             separator(bool): Draw a separating line when set to true
             spacing(Spacing): Specify the spacing of this component
         """
+        check_type(choices, Choice, is_list=True, may_be_none=False)
+        check_type(id, str, is_list=False, may_be_none=False)
+
         self.choices = choices
         self.type = "Input.ChoiceSet"
         self.id = id
